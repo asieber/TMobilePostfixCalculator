@@ -5,7 +5,7 @@ import java.util.Stack;
 public class PostfixCalculator {
 	
 	private static boolean isOperator(String term) {
-		return ("+").equals(term);
+		return "+".equals(term) || "-".equals(term) || "*".equals(term) || "/".equals(term);
 	}
 	
 	public static double evaluateSum(String expression) {
@@ -14,12 +14,19 @@ public class PostfixCalculator {
 		for (String term : terms) {
 			if (isOperator(term)) {
 				//do operator stuff
-				if (("+").equals(term)) {
-					double num1 = operands.pop();
-					double num2 = operands.pop();
-					operands.push(num1 + num2);
+				if ("+".equals(term)) {
+					operands.push(operands.pop() + operands.pop());
 				}
-				//-,*,/
+				if ("-".equals(term)) {
+					operands.push(-operands.pop() + operands.pop());
+				}
+				if ("*".equals(term)) {
+					operands.push(operands.pop() * operands.pop());
+				}
+				if ("/".equals(term)) {
+					double denominator = operands.pop();
+					operands.push(operands.pop() / denominator);
+				}
 			}
 			else {
 				//do operand stuff
