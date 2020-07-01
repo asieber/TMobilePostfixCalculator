@@ -17,13 +17,13 @@ public class PostfixCalculator {
 				if ("+".equals(term)) {
 					operands.push(operands.pop() + operands.pop());
 				}
-				if ("-".equals(term)) {
+				else if ("-".equals(term)) {
 					operands.push(-operands.pop() + operands.pop());
 				}
-				if ("*".equals(term)) {
+				else if ("*".equals(term)) {
 					operands.push(operands.pop() * operands.pop());
 				}
-				if ("/".equals(term)) {
+				else if ("/".equals(term)) {
 					double denominator = operands.pop();
 					operands.push(operands.pop() / denominator);
 				}
@@ -46,15 +46,15 @@ public class PostfixCalculator {
 					String second = expressions.pop();
 					expressions.push("(" + expressions.pop() + " + " + second + ")");
 				}
-				if ("-".equals(term)) {
+				else if ("-".equals(term)) {
 					String second = expressions.pop();
 					expressions.push("(" + expressions.pop() + " - " + second + ")");
 				}
-				if ("*".equals(term)) {
+				else if ("*".equals(term)) {
 					String second = expressions.pop();
 					expressions.push("(" + expressions.pop() + " * " + second + ")");
 				}
-				if ("/".equals(term)) {
+				else if ("/".equals(term)) {
 					String denominator = expressions.pop();
 					expressions.push("(" + expressions.pop() + " / " + denominator + ")");
 				}
